@@ -1,7 +1,7 @@
 //this is the port and ip information we will listen for
 //should be set to the web server
-var http_IP = '10.10.7.179';
-var http_port = 8080;
+var http_IP = '127.0.0.1';
+var http_port = 8081;
 
 //basic node.js module for http
 var http = require('http');
