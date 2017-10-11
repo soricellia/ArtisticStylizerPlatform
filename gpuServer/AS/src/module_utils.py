@@ -38,4 +38,33 @@ class module_utils:
         self.weighting_factor_style_loss = FLAGS.weighting_factor_style_loss
         self.weighting_factor_tv_loss = FLAGS.weighting_factor_tv_loss
     # end
+
+    def load_data(self, mod_utils):
+        jpg_files = [os.path.join(mod_utils.IMG_TRAIN_MSCOCO_TEST2017_CONTENT_DIR, file) 
+                    for file in os.listdir(mod_utils.IMG_TRAIN_MSCOCO_TEST2017_CONTENT_DIR)
+                    if file.endswith(".jpg")]
+
+        loaded_jpg_files = []
+        for jpg_file in jpg_files:
+            loaded_jpg_file = misc.imresize(misc.imread(jpg_file), 
+                                            size=[mod_utils.img_height_dim, mod_utils.img_width_dim], 
+                                            interp='bilinear') 
+            if loaded_jpg_file.shape == (256,256,3):
+                loaded_jpg_files.append(loaded_jpg_file)
+        all_jpg_images = np.stack(loaded_jpg_files)
+
+    def build_queue(self):
+        queue_input_data = tf.placeholder(tf.float32, shape=[20, 4])
+        queue_input_target = tf.placeholder(tf.float32, shape=[20, 3])
+
+        queue = tf.FIFOQueue(capacity=50, dtypes=[tf.float32, tf.float32], shapes=[[4], [3]])
+
+        enqueue_op = queue.enqueue_many([queue_input_data, queue_input_target])
+        dequeue_op = queue.dequeue()queue_input_data = tf.placeholder(tf.float32, shape=[20, 4])
+        queue_input_target = tf.placeholder(tf.float32, shape=[20, 3])
+
+        queue = tf.FIFOQueue(capacity=50, dtypes=[tf.float32, tf.float32], shapes=[[4], [3]])
+
+        enqueue_op = queue.enqueue_many([queue_input_data, queue_input_target])
+        dequeue_op = queue.dequeue()
 # end
