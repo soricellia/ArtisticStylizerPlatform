@@ -1,5 +1,6 @@
 import tensorflow as tf
 
+# TODO revise for ada-in algorithm
 tf.flags.DEFINE_string("run_type", "train", "run type for module")
 tf.flags.DEFINE_string("process_id", "AAA", "process id for the this job")
 tf.flags.DEFINE_integer("img_height_dim", 256, "image height dimesions")

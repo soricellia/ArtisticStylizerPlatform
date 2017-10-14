@@ -9,18 +9,28 @@ class module_utils:
         # project paths
         self.SRC_DIR = os.path.abspath(os.curdir)
         self.ROOT_DIR = "/".join(self.SRC_DIR.split("/")[:-1])
+        self.LIB_DIR = os.path.join(self.ROOT_DIR, "lib")
         self.IMG_DIR = os.path.join(self.ROOT_DIR, "img")
+
+        # path to persisted models and model logs
+        self.CHECKPOINT_DIR = os.path.join(self.ROOT_DIR, "chkpts") 
+        self.LOGS_DIR = os.path.join(self.LIB_DIR, "logs")
+
+        # paths to images needed for training
         self.IMG_TRAIN_CONTENT_DIR = os.path.join(self.IMG_DIR, "train_content")
-        self.IMG_TRAIN_MSCOCO_TRAIN2017_CONTENT_DIR = os.path.join(self.IMG_TRAIN_CONTENT_DIR, "train2017")
-        #self.IMG_TRAIN_MSCOCO_TEST2017_CONTENT_DIR = os.path.join(self.IMG_TRAIN_CONTENT_DIR, "test2017")
-        self.IMG_TRAIN_MSCOCO_TEST2017_CONTENT_DIR = os.path.join(self.IMG_TRAIN_CONTENT_DIR, "trainMicro")
+        self.IMG_TRAIN_STYLE_DIR = os.path.join(self.IMG_DIR, "train_style")
+
+        #self.IMG_TRAIN_MSCOCO_TRAIN2017_CONTENT_DIR = os.path.join(self.IMG_TRAIN_CONTENT_DIR, "train2017")
+        self.IMG_TRAIN_MSCOCO_TRAIN2017_CONTENT_DIR = os.path.join(self.IMG_TRAIN_CONTENT_DIR, "trainMicro")
+
+        #self.IMG_TRAIN_WIKIART_STYLE_DIR = os.path.join(self.IMG_TRAIN_STYLE_DIR, "train")
+        self.IMG_TRAIN_WIKIART_STYLE_DIR = os.path.join(self.IMG_TRAIN_STYLE_DIR, "trainMicro")
+        
+        # path to images used for model inference
         self.IMG_TEST_CONTENT_DIR = os.path.join(self.IMG_DIR, "test_content")
         self.IMG_TEST_RESULTS_DIR = os.path.join(self.IMG_DIR, "test_results")
         self.IMG_STYLE_DIR = os.path.join(self.IMG_DIR, "styles")
         self.IMG_STYLE_CONTRIB_DIR = os.path.join(self.IMG_DIR, "style_contrib")
-        self.LIB_DIR = os.path.join(self.ROOT_DIR, "lib")
-        self.CHECKPOINT_DIR = os.path.join(self.ROOT_DIR, "chkpts") 
-        self.LOGS_DIR = os.path.join(self.LIB_DIR, "logs")
 
         # FLAGS
         self.run_type = FLAGS.run_type
@@ -39,32 +49,36 @@ class module_utils:
         self.weighting_factor_tv_loss = FLAGS.weighting_factor_tv_loss
     # end
 
-    def load_data(self, mod_utils):
-        jpg_files = [os.path.join(mod_utils.IMG_TRAIN_MSCOCO_TEST2017_CONTENT_DIR, file) 
-                    for file in os.listdir(mod_utils.IMG_TRAIN_MSCOCO_TEST2017_CONTENT_DIR)
+    def load_data(self, dir):
+        jpg_files = [os.path.join(dir, file) 
+                    for file in os.listdir(dir)
                     if file.endswith(".jpg")]
 
         loaded_jpg_files = []
         for jpg_file in jpg_files:
             loaded_jpg_file = misc.imresize(misc.imread(jpg_file), 
-                                            size=[mod_utils.img_height_dim, mod_utils.img_width_dim], 
+                                            size=[self.img_height_dim, self.img_width_dim], 
                                             interp='bilinear') 
             if loaded_jpg_file.shape == (256,256,3):
                 loaded_jpg_files.append(loaded_jpg_file)
         all_jpg_images = np.stack(loaded_jpg_files)
+        return all_jpg_images 
+    # end
 
-    def build_queue(self):
-        queue_input_data = tf.placeholder(tf.float32, shape=[20, 4])
-        queue_input_target = tf.placeholder(tf.float32, shape=[20, 3])
-
-        queue = tf.FIFOQueue(capacity=50, dtypes=[tf.float32, tf.float32], shapes=[[4], [3]])
-
-        enqueue_op = queue.enqueue_many([queue_input_data, queue_input_target])
-        dequeue_op = queue.dequeue()queue_input_data = tf.placeholder(tf.float32, shape=[20, 4])
-        queue_input_target = tf.placeholder(tf.float32, shape=[20, 3])
-
-        queue = tf.FIFOQueue(capacity=50, dtypes=[tf.float32, tf.float32], shapes=[[4], [3]])
-
-        enqueue_op = queue.enqueue_many([queue_input_data, queue_input_target])
-        dequeue_op = queue.dequeue()
+    def get_batch_iter(self, data, batch_size, num_epochs, shuffle=True):
+        data = np.array(data)
+        data_size = len(data)
+        num_batch_per_epoch = int((len(data)-1) / batch_size)+1
+        for epoch in range(num_epochs):
+            # shuffle the data at each epoch
+            if shuffle:
+                shuffle_indicies = np.random.permutation(np.arange(data_size))
+                shuffled_data = data[shuffled_indices]
+            else:
+                shuffled_data = data
+            for batch_num in range(num_batches_per_epoch):
+                start_index = batch_num * batch_size
+                end_index = min((batch_num+1) * batch_size, data_size)
+                yield shuffled_data[start_index:end_index]
+    # end
 # end
