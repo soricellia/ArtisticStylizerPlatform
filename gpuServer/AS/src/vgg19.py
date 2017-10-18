@@ -1,3 +1,7 @@
+"""
+original author (https://arxiv.org/pdf/1703.06868.pdf) implementation
+uses normalized vgg19 found here  https://s3.amazonaws.com/xunhuang-public/adain/vgg_normalised.t7
+"""
 import os
 import tensorflow as tf
 
@@ -5,8 +9,68 @@ import numpy as np
 import time
 import inspect
 
-VGG_MEAN = [103.939, 116.779, 123.68]
+import torchfile
 
+def vgg19(input, t7_file, scope, type):
+    '''
+    Loads a Torch network from a saved .t7 file into Tensorflow.
+
+    :param input Input to Torch network
+    :param t7 Path to t7 file to use
+    '''
+    with tf.variable_scope("{}_vgg19".format(scope)):
+        print('enter vgg19')
+        print(input.shape)
+        layers = []
+        print_layers = []  # [0, 30]
+        t7 = torchfile.load(t7_file, force_8bytes_long=False)
+
+        for idx, module in enumerate(t7.modules):
+
+            if idx in print_layers:
+                print('layers')
+                print(module)
+
+            if module._typename == b'nn.SpatialReflectionPadding':
+                left = module.pad_l
+                right = module.pad_r
+                top = module.pad_t
+                bottom = module.pad_b
+                input = tf.pad(input, [[0, 0], [top, bottom], [left, right], [0, 0]], 'REFLECT')
+                layers.append(input)
+            elif module._typename == b'nn.SpatialConvolution':
+                weight = module.weight.transpose([2, 3, 1, 0])
+                bias = module.bias
+                strides = [1, module.dH, module.dW, 1]  # Assumes 'NHWC'
+                input = tf.nn.conv2d(input, weight, strides, padding='VALID')
+                input = tf.nn.bias_add(input, bias)
+                layers.append(input)
+            elif module._typename == b'nn.ReLU':
+                input = tf.nn.relu(input)
+                layers.append(input)
+            elif module._typename == b'nn.SpatialUpSamplingNearest':
+                d = tf.shape(input)
+                size = [d[1] * module.scale_factor, d[2] * module.scale_factor]
+                input = tf.image.resize_nearest_neighbor(input, size)
+                layers.append(input)
+            elif module._typename == b'nn.SpatialMaxPooling':
+                input = tf.nn.max_pool(input, ksize=[1, module.kH, module.kW, 1], strides=[1, module.dH, module.dW, 1],
+                                     padding='VALID', name=str(module.name, 'utf-8'))
+                layers.append(input)
+            else:
+                raise NotImplementedError(module._typename)
+        output = input
+        if type == "encoder":
+            return layers
+        else:
+            return output
+# end
+
+"""
+original tensorflow implementation of vgg19 found here https://github.com/machrisaa/tensorflow-vgg.git
+"""
+
+VGG_MEAN = [103.939, 116.779, 123.68]
 
 class Vgg19:
     def __init__(self, vgg19_npy_path=None):
@@ -126,3 +190,4 @@ class Vgg19:
 
     def get_fc_weight(self, name):
         return tf.constant(self.data_dict[name][0], name="weights")
+
