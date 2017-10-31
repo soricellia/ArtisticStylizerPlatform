@@ -6,16 +6,16 @@
         		<span class="icon-bar"></span>
         		<span class="icon-bar"></span>
       		</button>
-      		<a class="navbar-brand" href="#">ASP</a>
+      		<a class="navbar-brand" href="/home">ASP</a>
     	</div>
     	<div class="collapse navbar-collapse" id="myNavbar">
       		<ul class="nav navbar-nav navbar-right">
-				<li><a href="explore.html"><span class="=explore"></span>Explore</a></li>
-        		<li><a href="about.html"><span class="=about"></span>About</a></li>
+				<li><a href="/explore"><span class="=explore"></span>Explore</a></li>
+        		<li><a href="/about"><span class="=about"></span>About</a></li>
 	    		<!-- if the user isnt logged in display the loggin & signup link -->
 	    		<% if(!user){ %>
 	    			<li><a href="/login"><span class="login">Login</span></a></li>
-	    			<li><a href="/create-account"><span class="sign-up">Create Account</span></a></li>
+	    			<li><a href="/create-account"><span class="sign-up">Sign Up</span></a></li>
 	    		<% } %>
 	    		<!-- only display the dropdown if the user is logged in -->
 				<% if(user){ %>

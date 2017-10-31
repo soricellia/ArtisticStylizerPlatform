@@ -27,10 +27,6 @@ html { overflow-y: scroll; }
 	background-color: #FA7470;
 }
 
-/*.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
-	background-color: #FA7470;
-	border-color: black;
-}*/
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
 	background-color: #FA7470;
@@ -92,36 +88,18 @@ html { overflow-y: scroll; }
 	border-radius: 100%;
 }
 
-.dropdown a:hover {background-color: #f1f1f1}
+.dropdown a:hover {
+	background-color: #f1f1f1;
+}
 
-.show {display:block;}
+.show {
+	display:block;
+}
 
 /* -----  Home Page ------ */
 
-#home-wrapper {
-	position: absolute;
-	top: 150px;
-}
-
-
 .wrapper {
-	position: absolute;
-	top: 0px;
-	width: 100%;
-	height: 525px;
-	display: flex;
-  align-items: center;
-  width: 100%;
-	color: white;
-}
-
-.wrapper-content {
-	width: 50%;
-  margin: 0 auto;
-}
-
-.wrapper-copy {
-	text-align: center;
+	margin-top: 100px;
 }
 
 #upload-photo {
@@ -181,26 +159,11 @@ html { overflow-y: scroll; }
 	margin: 10px;
 }
 
-#image {
-	position: absolute;
-	top: 0px;
-	width: 100%;
-	height: 550px;
-	z-index: -1;
-}
-
-#image-wrapper {
-	width: 100%;
-	height: 100%;
-	z-index: -1;
-	background-size: cover;
-	background-repeat: no-repeat;
-}
 
 /* ---- grid ---- */
 
 .content {
-	margin-top: 550px;
+	margin-top: 200px;
 }
 
 .grid {
@@ -354,20 +317,21 @@ html { overflow-y: scroll; }
 
 }
 
+.admin-container {
+	margin-top: 100px;
+}
+
 
 /* ---- Explore Page ---- */
 
-.explore-content {
-	margin-top: 200px;
+.explore-wrapper {
+	margin-top: 100px;
 }
+
 
 #explore-title {
 	font-size: 45px;
 }
-
-
-/* ---- Explore Page Search bar ---- */
-
 
 #custom-search-input{
     padding: 3px;
