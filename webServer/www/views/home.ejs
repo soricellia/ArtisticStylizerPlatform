@@ -14,6 +14,7 @@
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <script type="text/javascript" src="/javascript/home-grid.js"></script>
+<script type="text/javascript" src="/javascript/open-image.js"></script>
 </head>
 <body>
 	<!-- write the header -->
@@ -32,7 +33,7 @@
 		        	<div class="file-select">
 		          		<div class="file-select-button" id="fileName"><i class="material-icons" id="camera_icon" style="font-size: 30px">camera_alt</i></div>
 		          		<div class="file-select-name" id="noFile" style="font-size:20px">Choose Photo</div>
-		          		<input type="file" name="chooseFile" id="chooseFile" onchange="readURL(this);"/>
+		          		<input id="uploadPhoto" type="file" class="upload" multiple="multiple" accept="image/*" />
 		        	</div>
 		      	</div>
 			</div>
@@ -41,27 +42,28 @@
 		        	<div class="file-select">
 		          		<div class="file-select-button" id="fileName"><i class="material-icons" id="video_icon" style="font-size: 30px">videocam</i></div>
 		          		<div class="file-select-name" id="noFile" style="font-size:20px">Choose Video</div>
-		          		<input type="file" name="chooseFile" id="chooseFile" onchange="readURL(this);">
+		          		<input id="uploadVideo" type="file" class="upload" multiple="multiple" accept="image/*" />
 		        	</div>
 		      	</div>
 			</div>	
 		</div>
-		<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal fade" id="homeModal" role="dialog">
     		<div class="modal-dialog">
       			<div class="modal-content">
         			<div class="modal-header">
         				<div class="container">
-        				<div class="row">
-        				<div class="col-md-6" style="text-align: center">Choose Style</div>
-        				</div>
-          				<div class="row">
-    					<div class="styles"><p></div>
-    					<div class="styles"></div><div class="styles"></div>
-    					</div>
+        					<div class="row">
+        						<div class="col-md-6" style="text-align: center">Choose Style</div>
+        					</div>
+          					<div class="row">
+    							<div class="styles"></div>
+    							<div class="styles"></div>
+    							<div class="styles"></div>
+    						</div>
     					</div>
         			</div>
         			<div class="modal-body">
-          				<img id="uploaded-image" src="#"/>
+          				<img id="uploaded-image" src="#" style="width:100%;"/>
         			</div>
         			<div class="modal-footer">
 						<button type="button" class="btn btn-primary modal-button">Save content</button>
@@ -109,7 +111,7 @@
 	<div class="footer-container">
         <a class="footer-content" href="ebinizerlop@gmail.com">Email Us</a>
         <span class ="footer-content" >&copy; Copyright 1738. No Rights Reserved</span>
-  	</div>
+  	</div>	
 
 </body>
 
