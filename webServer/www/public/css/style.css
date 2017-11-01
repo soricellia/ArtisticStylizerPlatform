@@ -2,10 +2,14 @@ body {
 	font-family: 'Libre Franklin', sans-serif;
 }
 
-* { box-sizing: border-box; }
+* { 
+	box-sizing: border-box; 
+}
 
 /* force scrollbar */
-html { overflow-y: scroll; }
+html { 
+	overflow-y: scroll; 
+}
 
 
 /* buttons */
@@ -19,6 +23,13 @@ html { overflow-y: scroll; }
 	color: black !important;
 }
 
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+	background-color: #FA7470;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+/* ----- Navigation Bar ------ */
+
 .navbar-inverse .navbar-toggle{
 	background-color: #FA7470;
 }
@@ -27,30 +38,28 @@ html { overflow-y: scroll; }
 	background-color: #FA7470;
 }
 
-
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
-	background-color: #FA7470;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+.navbar-tab:hover {
+	border-bottom: 2px solid #FA7470;
 }
-
-/* ----- Navigation Bar ------ */
 
 .navbar {
 	background-color: white;
 	z-index: 1;
 	border-color: white;
 	border-radius: 0px;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.16), 0 1px 3px rgba(0,0,0,0.23);
+	/*box-shadow: 0 1px 3px rgba(0,0,0,0.16), 0 1px 3px rgba(0,0,0,0.23);*/
 }
 
 .navbar li a {
 	color: black !important;
-	padding-right: 30px;
+	/*padding-right: 30px;*/
 }
 
 .navbar li a:hover {
-	color: #FA7470;
+	color: #FA7470 !important;
+	/*border-bottom: 2px solid #FA7470;*/
 }
+
 
 .navbar .navbar-brand  {
 	color: #FA7470;
@@ -70,6 +79,11 @@ html { overflow-y: scroll; }
 	margin-top: 11px;
 	padding-top: 4px !important;
 	padding-bottom: 4px !important;
+}
+
+.sign-up:hover {
+	background-color: #FA7470;
+	color: black;
 }
 
 .navbar-inverse .navbar-nav>li>a:hover {
@@ -120,6 +134,8 @@ html { overflow-y: scroll; }
 	box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
 	margin-top: 20px;
 }
+
+/* -----  Photo and Video Upload Section ------ */
 
 .file-upload{display:block;text-align:center;font-size: 12px;}
 .file-upload .file-select{display:block;/*border: 2px solid #dce4ec;*/cursor:pointer;height:40px;line-height:40px;text-align:left;overflow:hidden;position:relative;}
@@ -204,7 +220,6 @@ html { overflow-y: scroll; }
 	margin-top: 175px;
 }
 
-
 /* ---- footer ---- */
 
 .footer-container {
@@ -220,10 +235,9 @@ html { overflow-y: scroll; }
 .footer-content {
 	margin-left: 10px;
 	display: inline-block;
-
 }
 
-/* ---- About Page Content ---- */
+/* ---- About Page ---- */
 
 .about-title {
 	margin-top: 150px;
@@ -237,7 +251,7 @@ html { overflow-y: scroll; }
 	text-align: left;
 }
 
-/* ---- Profile Page Content ---- */
+/* ---- Profile Page  ---- */
 
 .profile-container {
 	margin-top: 125px;
@@ -248,7 +262,7 @@ html { overflow-y: scroll; }
 }
 
 
-/* ---- Create Account Content ---- */
+/* ---- Create Account ---- */
 
 .subscripitions {
 	height: 175px;
