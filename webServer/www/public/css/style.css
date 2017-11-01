@@ -69,6 +69,15 @@ html {
 	color: #FA7470;
 }
 
+#logo {
+
+}
+
+.navbar-brand {
+	padding-top: 2px !important;
+	padding-left: 15px !important;
+}
+
 .sign-up {
 	border-style: solid;
 	border-width: 1px;
@@ -217,7 +226,48 @@ html {
 /* ---- Login Content ---- */
 
 .login-container {
-	margin-top: 175px;
+	margin-top: 100px;
+}
+
+#name-div {
+	/*position: absolute;
+	top: 75px;
+	left: 25%;*/
+}
+
+.name-letters {
+	font-weight:bold; 
+	color: #FA7470; 
+	font-size: 100px; 
+	display: inline;
+}
+
+#a {
+
+}
+#r {
+	
+}
+#t {
+	
+}
+#i {
+	
+}
+#l {
+	
+}
+#i {
+	
+}
+#z {
+	
+}
+#e {
+	
+}
+#r {
+	
 }
 
 /* ---- footer ---- */
@@ -239,11 +289,6 @@ html {
 
 /* ---- About Page ---- */
 
-.about-title {
-	margin-top: 150px;
-	font-size: 40px;
-	color: #FA7470;
-}
 
 .about-content {
 	margin-top: 25px;
