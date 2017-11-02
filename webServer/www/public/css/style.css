@@ -40,6 +40,7 @@ html {
 
 .navbar-tab:hover {
 	border-bottom: 2px solid #FA7470;
+	color: #FA7470 !important;
 }
 
 .navbar {
@@ -55,26 +56,8 @@ html {
 	/*padding-right: 30px;*/
 }
 
-.navbar li a:hover {
-	color: #FA7470 !important;
-	/*border-bottom: 2px solid #FA7470;*/
-}
-
-
-.navbar .navbar-brand  {
-	color: #FA7470;
-}
-
-.navbar-brand:focus, .navbar-inverse .navbar-brand:hover {
-	color: #FA7470;
-}
-
-#logo {
-
-}
-
 .navbar-brand {
-	padding-top: 2px !important;
+	padding-top: 1px !important;
 	padding-left: 15px !important;
 }
 
@@ -95,9 +78,9 @@ html {
 	color: black;
 }
 
-.navbar-inverse .navbar-nav>li>a:hover {
+/*.navbar-inverse .navbar-nav>li>a:hover {
 	color: #FA7470 !important;
-}
+}*/
 
 .profile {
 	padding: 0px !important;
@@ -184,6 +167,58 @@ html {
 	margin: 10px;
 }
 
+/* ----- Carousel Section ------ */
+
+.carousel-container {
+	width: 100% !important;
+	margin-top: 10px;
+}
+
+.first-style-carousel {
+	margin-left: -15px;
+}
+
+ul.thumbnails { 
+    margin-bottom: 0px;
+}
+
+/* Carousel Control */
+.control-box {
+    text-align: right;
+    width: 100%;
+}
+.carousel-control{
+    background: #666;
+    border: 0px;
+    border-radius: 0px;
+    display: inline-block;
+    font-size: 34px;
+    font-weight: 200;
+    line-height: 18px;
+    opacity: 0.5;
+    padding: 4px 10px 0px;
+    position: static;
+    height: 30px;
+    width: 15px;
+}
+
+/* Mobile Only */
+@media (max-width: 767px) {
+    .page-header, .control-box {
+        text-align: center;
+    } 
+}
+@media (max-width: 479px) {
+    .caption {
+        word-break: break-all;
+    }
+}
+
+
+li { list-style-type:none;}
+
+::selection { background: #ff5e99; color: #FFFFFF; text-shadow: 0; }
+::-moz-selection { background: #ff5e99; color: #FFFFFF; }
 
 /* ---- grid ---- */
 
@@ -226,7 +261,7 @@ html {
 /* ---- Login Content ---- */
 
 .login-container {
-	margin-top: 100px;
+	margin-top: 50px;
 }
 
 #name-div {
@@ -238,36 +273,9 @@ html {
 .name-letters {
 	font-weight:bold; 
 	color: #FA7470; 
-	font-size: 100px; 
+	font-size: 150px; 
 	display: inline;
-}
-
-#a {
-
-}
-#r {
-	
-}
-#t {
-	
-}
-#i {
-	
-}
-#l {
-	
-}
-#i {
-	
-}
-#z {
-	
-}
-#e {
-	
-}
-#r {
-	
+	margin-right: 10px;
 }
 
 /* ---- footer ---- */

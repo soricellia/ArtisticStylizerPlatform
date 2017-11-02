@@ -22,7 +22,7 @@
 
 	<div class="container wrapper">
 		<div class="row">
-			<div class="col-md-10 col-md-offset-1"><h1 style="font-weight:bold; color: #FA7470; font-size: 50px">Stylize</h1></div>
+			<div class="col-md-10 col-md-offset-1"><h1 style="font-weight:bold; color: #FA7470; font-size: 75px">Stylize</h1></div>
 		</div>
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1"><h1 style="margin-top: 10px">Upload a Photo or Video to Style</h1></div>
@@ -47,19 +47,67 @@
 		      	</div>
 			</div>	
 		</div>
-		<div class="modal fade" id="homeModal" role="dialog">
+		<div class="modal fade" id="uploadModal" role="dialog">
     		<div class="modal-dialog">
       			<div class="modal-content">
         			<div class="modal-header">
-        				<div class="container">
+        				<div class="container carousel-container">
         					<div class="row">
-        						<div class="col-md-6" style="text-align: center">Choose Style</div>
+        						<div class="col-md-12" style="text-align: center">Choose Style</div>
         					</div>
           					<div class="row">
+          						<div class="carousel" id="myCarousel">
+							        <div class="carousel-inner">
+							            <div class="item active">
+						                    <ul class="thumbnails">
+						                        <li class="col-sm-4 first-style-carousel">
+													<div class="thumbnail">
+														<a href="#"><img src="/images/rowing2.jpg" alt=""></a>
+						                            </div>
+						                        </li>
+						                        <li class="col-sm-4">
+													<div class="thumbnail">
+														<a href="#"><img src="/images/rowing2.jpg" alt=""></a>
+													</div>
+						                        </li>
+						                        <li class="col-sm-4">
+													<div class="thumbnail">
+														<a href="#"><img src="/images/rowing2.jpg" alt=""></a>
+													</div>
+						                        </li>
+						                    </ul>
+						              	</div><!-- /Slide1 --> 
+						            	<div class="item">
+						                    <ul class="thumbnails">
+						                        <li class="col-sm-4 first-style-carousel">
+													<div class="thumbnail">
+														<a href="#"><img src="/images/rowing.jpg" alt=""></a>
+													</div>
+						                        </li>
+						                        <li class="col-sm-4">
+													<div class="thumbnail">
+														<a href="#"><img src="/images/rowing.jpg" alt=""></a>
+													</div>
+						                        </li>
+						                        <li class="col-sm-4">
+													<div class="thumbnail">
+														<a href="#"><img src="/images/rowing.jpg" alt=""></a>
+													</div>
+						                        </li>
+						                    </ul>
+						             	</div><!-- /Slide2 -->  
+							        </div>
+							    </div>	
+    							<!-- <div class="styles"></div>
     							<div class="styles"></div>
-    							<div class="styles"></div>
-    							<div class="styles"></div>
+    							<div class="styles"></div> -->
     						</div>
+    						<nav>
+							<ul class="control-box pager">
+								<li><a data-slide="prev" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-left"></i></a></li>
+								<li><a data-slide="next" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-right"></i></li>
+							</ul>
+						</nav>
     					</div>
         			</div>
         			<div class="modal-body">
@@ -71,42 +119,58 @@
         			</div>
       			</div>
     		</div>
-  		</div>	
+  		</div>
+  		<div class="modal fade content-modal" id="homeModal" role="dialog">
+    		<div class="modal-dialog">
+      		<!-- Modal content-->
+      			<div class="modal-content">
+        			<div class="modal-header">
+          				<button type="button" class="close" data-dismiss="modal">&times;</button>
+        			</div>
+        			<div class="modal-body">
+          				<img id="imagepreview" src="" style="width:100%;"/>
+        			</div>
+        			<div class="modal-footer">
+          				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        			</div>
+      			</div>
+    		</div>
+  		</div>
+
 	</div>	
-  <!-- <div id="image"><img src="images/blurryback3.jpg" id="image-wrapper"></div> -->
 
 	<div class="content">
-	  <div class="grid">
-	    <div class="grid-sizer"></div>
-	    <div class="grid-item">
-	      <img src="images/dinah.jpg" />
-	    </div>
-	    <div class="grid-item">
-	      <img src="images/rowing.jpg" />
-	    </div>
-	    <div class="grid-item">
-	      <img src="images/rowing2.jpg" />
-	    </div>
-	    <div class="grid-item">
-	      <img src="images/dog.jpg" />
-	    </div>
-	    <div class="grid-item">
-	      <img src="images/cape.jpg" />
-	    </div>
-	    <div class="grid-item">
-	      <img src="images/pip.png" />
-	    </div>
-	    <div class="grid-item">
-	      <img src="images/snow.jpg" />
-	    </div>
-	    <div class="grid-item">
-	      <img src="images/compound.png" />
-	    </div>
-	    <div class="grid-item">
-	      <img src="images/food.jpg" />
-	    </div>
-	  </div>
-	</div>
+  	  <div class="grid">
+  	    <div class="grid-sizer"></div>
+  	    <div class="grid-item">
+  	      <a href="#" class="pop"><img src="/images/dinah.jpg"></a>
+  	    </div>
+  	    <div class="grid-item">
+  	      <a href="#" class="pop"><img src="/images/rowing.jpg"></a>
+  	    </div>
+  	    <div class="grid-item">
+  	      <a href="#" class="pop"><img src="/images/rowing2.jpg"></a>
+  	    </div>
+  	    <div class="grid-item">
+  	      <a href="#" class="pop"><img src="/images/dog.jpg"></a>
+  	    </div>
+  	    <div class="grid-item">
+  	      <a href="#" class="pop"><img src="/images/cape.jpg"></a>
+  	    </div>
+  	    <div class="grid-item">
+  	      <a href="#" class="pop"><img src="/images/pip.png"></a>
+  	    </div>
+  	    <div class="grid-item">
+  	      <a href="#" class="pop"><img src="/images/snow.jpg"></a>
+  	    </div>
+  	    <div class="grid-item">
+  	      <a href="#" class="pop"><img src="/images/compound.png"></a>
+  	    </div>
+  	    <div class="grid-item">
+  	      <a href="#" class="pop"><img src="/images/food.jpg"></a>
+  	    </div>
+  	  </div>
+    </div>
 
 	<div class="footer-container">
         <a class="footer-content" href="ebinizerlop@gmail.com">Email Us</a>
