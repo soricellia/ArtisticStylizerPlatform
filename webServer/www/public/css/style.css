@@ -41,6 +41,7 @@ html {
 .navbar-tab:hover {
 	border-bottom: 2px solid #FA7470;
 	color: #FA7470 !important;
+	padding-bottom: 4px;
 }
 
 .navbar {
@@ -270,12 +271,31 @@ li { list-style-type:none;}
 	left: 25%;*/
 }
 
-.name-letters {
-	font-weight:bold; 
-	color: #FA7470; 
-	font-size: 150px; 
-	display: inline;
-	margin-right: 10px;
+.logo-letters {
+	display: inline-block;
+	letter-spacing: 15px;
+	font-weight:bold;
+	color: #FA7470;
+	font-size: 75px;
+	opacity: 0;
+}
+
+#left-stick {
+	position: absolute;
+	top: 100px;
+	left: 49%;
+	color: #FA7470;
+	font-size: 75px;
+	font-weight:bold;
+}
+
+#right-stick {
+	position: absolute;
+	top: 100px;
+	left: 49%;
+	color: #FA7470;
+	font-size: 75px;
+	font-weight:bold;
 }
 
 /* ---- footer ---- */
