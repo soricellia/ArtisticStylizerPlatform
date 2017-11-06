@@ -12,30 +12,29 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
   <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-  <script type="text/javascript" src="/javascript/animations.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 	<!-- write the header -->
   <% include partials/header %>
 
-  <h1 id="left-stick" class="">| </h1> 
-  <h1 id="right-stick" class=""> |</h1>
+  <h1 id="stick" class="">|</h1>
   <div class="container login-container">
-    <div id="row">
-      <div class="col-md-12" style="text-align: center;">
-      <h1 id="A" class="logo-letters left-letter">A</h1>
-      <h1 id="R" class="logo-letters left-letter">R</h1>
-      <h1 id="T" class="logo-letters left-letter">T</h1>
-      <h1 id="I" class="logo-letters left-letter">I</h1> 
-      <h1 id="L" class="logo-letters left-letter">L</h1>
-      <h1 id="I2" class="logo-letters right-letter">I</h1>
-      <h1 id="Z" class="logo-letters right-letter">Z</h1>
-      <h1 id="E" class="logo-letters right-letter">E</h1>
-      <h1 id="R2" class="logo-letters right-letter">R</h1>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2" style="text-align: center;">
+        <p class="logo-div">A</p>
+        <p class="logo-div">R</p>
+        <p class="logo-div">T</p>
+        <p class="logo-div">I</p>
+        <p class="logo-div">L</p>
+        <p class="logo-div">I</p>
+        <p class="logo-div">Z</p>
+        <p class="logo-div">E</p>
+        <p class="logo-div">R</p>
       </div>
-     </div>
-     <br/><br/><br/><br/><br/><br/> <br/><br/><br/> <br/><br/><br/>           
+    </div>
+     <br/><br/><br/><br/><br/><br/> <br/>           
     <form action="/login" method="post">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -70,7 +69,7 @@
         <a class="footer-content" href="ebinizerlop@gmail.com">Email Us</a>
         <span class ="footer-content" >&copy; Copyright 1738. No Rights Reserved</span>
   </div>
-
+  <script type="text/javascript" src="/javascript/animations.js"></script>
 </body>
 
 

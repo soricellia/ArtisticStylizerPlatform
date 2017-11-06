@@ -16,6 +16,7 @@
       <script type="text/javascript" src="/javascript/chart.js"></script>
       <script type="text/javascript" src="/javascript/expand-table.js"></script>
       <link rel="stylesheet" type="text/css" href="/css/style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
     	<!-- write the header -->
@@ -29,13 +30,47 @@
         </div>
         <div class="row">
           <div class="col-md-6">
-            <canvas id="data-upload-chart" class="chart"></canvas>
+              <canvas id="data-upload-chart" class="chart" style="width: 100%;"></canvas>
+              <div class="col-md-3">
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle button" type="button" data-toggle="dropdown">Start Date
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu"></ul>
+              </div>
+              </div>
+              <div class="col-md-3">
+                <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle button" type="button" data-toggle="dropdown">End Date
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu"></ul>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-primary  button">OK</button>
+              </div>
           </div>
           <div class="col-md-6">
             <canvas id="process-time-chart" class="chart"></canvas>
+            <div class="col-md-3">
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle button" type="button" data-toggle="dropdown">Start Date
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu"></ul>
+              </div>
+              </div>
+              <div class="col-md-3">
+                <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle button" type="button" data-toggle="dropdown">End Date
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu"></ul>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-primary  button">OK</button>
+              </div>
           </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-md-2">
             <div class="dropdown">
               <button class="btn btn-primary dropdown-toggle button" type="button" data-toggle="dropdown">Start Date
@@ -74,39 +109,44 @@
           <div class="col-md-2">
             <button type="button" class="btn btn-primary  button">OK</button>
           </div>
-        </div>
-        <div class="row" id="reports">
+        </div> -->
+        <div class="row" id="reports" style="margin-top: 30px;">
           <div class="col-md-12">
-            <h2>ReportS</h2>
+            <h2>Reports</h2>
           </div>
         </div>
         <div class="row">
-          <table class="table table-striped" id="admin-table">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>User</th>
-                <th>Descripition</th>
-                <th>Reported User</th>
-                <th>Content</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>09/23/2017</td>
-                <td>h_clinton</td>
-                <td>Content contains nudity</td>
-                <td>d_trump44</td>
-                <td>content_link</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+          <div class="col-md-8">
+            <table class="table table-striped" id="admin-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>User</th>
+                  <th>Descripition</th>
+                  <th>Reported User</th>
+                  <th>Content</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>09/23/2017</td>
+                  <td>h_clinton</td>
+                  <td>Content contains nudity</td>
+                  <td>d_trump44</td>
+                  <td>content_link</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>  
+          </div>
         <div class="row">
           <div class="col-md-2">
     				<button type="button" class="btn btn-primary button" onclick="expandTable()">Expand Table</button>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-12">
+        </div>  
       </div>
 
 
