@@ -1,5 +1,6 @@
 import tensorflow as tf
 import os
+from matplotlib import image
 from vgg19 import VGG19
 
 class Utils:
@@ -35,13 +36,6 @@ class Utils:
     return content_img, style_img
   # end  
 
-  def get_feed_dict(self):
-    # TODO this is currently not being used because cannot find content_img_placeholder
-    feed_dict={content_img_placeholder:self.CONTENT_IMG_PATH,
-    	       style_img_placeholder:self.STYLE_IMG_PATH}
-    return feed_dict
-  # end
-
   def _build_model(self, model_file):
       model = VGG19(t7_file=model_file) 
       return model
@@ -61,9 +55,10 @@ class Utils:
   # end
   
   def write_img_to_file(self, img, size):
+    image.imsave(os.path.join(self.RESULT_IMG_PATH, "results.jpg"), img)
     #img = tf.image.resize_images(img, size=size)
-    filewritten = tf.write_file(self.RESULT_IMG_PATH, tf.image.encode_jpeg(tf.cast(img, dtype=tf.uint8)))
-    return filewritten
+    #filewritten = tf.write_file(self.RESULT_IMG_PATH, tf.image.encode_jpeg(tf.cast(img, dtype=tf.uint8)))
+    #return filewritten
 
   def process_img(self, type, img):
     assert(type=="pre" or "post"), "type of image processing not specified"
@@ -76,6 +71,7 @@ class Utils:
       img = tf.squeeze(img)
       img = img * 255.0
       img = tf.clip_by_value(img, 0, 255)
+      img = tf.cast(img, dtype=tf.uint8)
     return img
   # end
 

@@ -5,7 +5,6 @@ original author (https://arxiv.org/pdf/1703.06868.pdf) implementation
 import tensorflow as tf
 from tensorflow.python.client import device_lib
 from inference_ops import Ops
-from matplotlib import image
 
 # image paths 
 tf.flags.DEFINE_string("style_img_path", "/home/mike/temps/megaseeds.jpg", "style image directory path")
@@ -52,6 +51,5 @@ with tf.Graph().as_default() as graph:
     sess = tf.Session()
 
   model = Ops(FLAGS=FLAGS)
-  stylized_img =  model.run(FLAGS=FLAGS, sess=sess)
+  model.run(FLAGS=FLAGS, sess=sess)
 
-  image.imsave(os.path.join(mod_utils.IMG_INFERENCE_RESULTS_DIR, "{}_results.jpg".format(FLAGS.process_id)), inference_ops.any_to_uint8_clip(stylized))

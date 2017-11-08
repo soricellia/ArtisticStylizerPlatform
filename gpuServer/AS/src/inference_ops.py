@@ -41,17 +41,13 @@ class Ops(Utils):
 
     with tf.name_scope("postprocess"):
       decoded_content = self.process_img(type="post", img=decoded_content)
-
-    #with tf.name_scope("write"):
-    #  filewritten = self.write_img_to_file(img=decoded_content, size=[1024, 1024])
     
-    # right before we need to run
     init = tf.global_variables_initializer()
     sess.run(init)
-    decoded_content = sess.run([decoded_content],
+    decoded_content = sess.run(decoded_content,
 		            feed_dict={content_img_placeholder:self.CONTENT_IMG_PATH,
     	                               style_img_placeholder:self.STYLE_IMG_PATH})
-    return decoded_content 
+    with tf.name_scope("write"):
+      self.write_img_to_file(img=decoded_content, size=[1024, 1024])
   # end
-
 # end

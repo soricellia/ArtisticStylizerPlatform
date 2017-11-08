@@ -6,6 +6,8 @@ class VGG19:
     """
     :param input img to vgg19 inputwork 
     :param t7_file path to trained torch files provided here https://s3.amazonaws.com/xunhuang-public/adain/*
+
+    borrowed https://github.com/jonrei/tf-AdaIN/blob/master/AdaIN.py
     """
     self.t7_restored_model = torchfile.load(t7_file, force_8bytes_long=False)
   # end
