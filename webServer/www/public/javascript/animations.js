@@ -6,8 +6,6 @@ var delay = 0;
 $(document).ready(function(){
 
 
-
-
 	$('#stick').delay(200).animate({
 		left: '1500px'
 	}, {
@@ -26,7 +24,7 @@ $(document).ready(function(){
 	        	}
 	        })	
 	    } 		
-	},3000);
+	},"slow");
 
 
 })		

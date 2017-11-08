@@ -1,3 +1,6 @@
+// this js page deals with everything modal
+
+
 var contentURL;
 
 $(document).ready(function(){
@@ -6,12 +9,18 @@ $(document).ready(function(){
 	$('.pop').on('click', function() {
 		console.log($(this).find('img').attr('src'));
 		$('#imagepreview').attr('src', $(this).find('img').attr('src'));
+    $('#imagepreview').css({
+      visibility: 'visible'
+    });
 		$('#exploreModal').modal('show');
 	});
 
   $('.pop').on('click', function() {
     contentURL = $(this).find('img').attr('src');
     $('#imagepreview').attr('src', contentURL);
+    $('#imagepreview').css({
+      visibility: 'visible'
+    });
     $('#homeModal').modal('show');
   });
 
@@ -37,18 +46,39 @@ $(document).ready(function(){
 
           reader.onload = function (e) {
               $('#' + id).attr('src', e.target.result);
+              $('#uploaded-image').css({
+                visibility: 'visible'
+              })
               $('#uploadModal').modal('show');
           }
 
           reader.readAsDataURL(input.files[0]);
       }
+  }    
+  
+  // displays the uploaded profile pic
+  function changeProfilePic(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#profileImage').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
   }
+    
+    // calls changeProfilePic when user chooses to change their profile pic
+    $("#changeProfilePicInput").change(function(){
+        changeProfilePic(this);
+    });
 
 
   // report content pop up 
   $('#contact').click(function() {
     $('#contactForm').fadeToggle();
-  })
+  });
   $(document).mouseup(function (e) {
     var container = $("#contactForm");
 
@@ -58,6 +88,31 @@ $(document).ready(function(){
         container.fadeOut();
     }
   });
+
+  // hides the upload modal when the save
+  $('#saveButtonUpload').click(function() {
+    $('#uploadModal').modal('hide');
+  });
+
+  // hides the upload modal when the save
+  $('#saveButton').click(function() {
+    $('#homeModal').modal('hide');
+  });
+
+  // hides the image in the modal when a style is clicked and shows the loading animation
+  $('.thumbnails').click(function() {
+    $('#uploaded-image').css({
+      visibility: 'hidden'
+    });
+    $('#imagepreview').css({
+      visibility: 'hidden'
+    });
+    $('.sk-folding-cube').css({
+      visibility: 'visible'
+    });
+  });
+
+
 })
 
 
