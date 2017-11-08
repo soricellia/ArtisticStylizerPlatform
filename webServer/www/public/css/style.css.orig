@@ -30,6 +30,7 @@ html {
 
 /* ----- Navigation Bar ------ */
 
+<<<<<<< HEAD
 .navbar-inverse .navbar-toggle{
 	background-color: #FA7470;
 }
@@ -42,6 +43,19 @@ html {
 	border-bottom: 2px solid #FA7470;
 	color: #FA7470 !important;
 	padding-bottom: 4px;
+=======
+.navbar {
+	background-color: white;
+	z-index: 1;
+	border-color: white;
+	border-radius: 0px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.16), 0 1px 3px rgba(0,0,0,0.23);
+}
+
+.navbar li a {
+	color: black !important;
+	padding-right: 30px;
+>>>>>>> 663c6e8dc8e639e82b2aa920b5dab31ab10d0d80
 }
 
 .navbar {
@@ -57,9 +71,14 @@ html {
 	/*padding-right: 30px;*/
 }
 
+<<<<<<< HEAD
 .navbar-brand {
 	padding-top: 1px !important;
 	padding-left: 15px !important;
+=======
+.navbar-brand:focus, .navbar-inverse .navbar-brand:hover {
+	color: #FA7470;
+>>>>>>> 663c6e8dc8e639e82b2aa920b5dab31ab10d0d80
 }
 
 .sign-up {
@@ -95,18 +114,61 @@ html {
 	border-radius: 100%;
 }
 
-.dropdown a:hover {
-	background-color: #f1f1f1;
-}
+.dropdown a:hover {background-color: #f1f1f1}
 
 .show {
 	display:block;
 }
 
 /* -----  Home Page ------ */
+<<<<<<< HEAD
 
 .wrapper {
 	margin-top: 100px;
+=======
+
+#home-wrapper {
+	position: absolute;
+	top: 150px;
+}
+
+
+.wrapper {
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	height: 525px;
+	display: flex;
+  align-items: center;
+  width: 100%;
+	color: white;
+>>>>>>> 663c6e8dc8e639e82b2aa920b5dab31ab10d0d80
+}
+
+#upload-photo {
+	border-radius: 5px 0px 0px 5px;
+}
+
+<<<<<<< HEAD
+#upload-video {
+	border-radius: 0px 5px 5px 0px;
+}
+
+.upload {
+  	padding: 15px;
+  	border: 1px solid #D3D3D3;
+  	border-radius: 5px 20px 5px;
+  	/*margin: auto;*/
+  	opacity: .7;
+  	overflow: hidden;
+	box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
+	margin-top: 20px;
+}
+
+/* -----  Photo and Video Upload Section ------ */
+=======
+.wrapper-copy {
+	text-align: center;
 }
 
 #upload-photo {
@@ -127,8 +189,7 @@ html {
 	box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
 	margin-top: 20px;
 }
-
-/* -----  Photo and Video Upload Section ------ */
+>>>>>>> 663c6e8dc8e639e82b2aa920b5dab31ab10d0d80
 
 .file-upload{display:block;text-align:center;font-size: 12px;}
 .file-upload .file-select{display:block;/*border: 2px solid #dce4ec;*/cursor:pointer;height:40px;line-height:40px;text-align:left;overflow:hidden;position:relative;}
@@ -158,7 +219,7 @@ html {
 	text-align: center;
 }
 
-/*.styles {
+.styles {
 	border-color: black;
 	border-width: 1px;
 	border-style: solid;
@@ -166,16 +227,9 @@ html {
 	width: 75px;
 	display: inline-block;
 	margin: 10px;
-}*/
-
-.carousel-images {
-	width: 150px !important;
-	height: 125px !important;
-	background-position: 50% 50%;
-    background-repeat:   no-repeat;
-    background-size:     cover;
 }
 
+<<<<<<< HEAD
 /* ----- Carousel Section ------ */
 
 .carousel-container {
@@ -189,6 +243,22 @@ html {
 
 ul.thumbnails { 
     margin-bottom: 0px;
+=======
+#image {
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	height: 550px;
+	z-index: -1;
+}
+
+#image-wrapper {
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	background-size: cover;
+	background-repeat: no-repeat;
+>>>>>>> 663c6e8dc8e639e82b2aa920b5dab31ab10d0d80
 }
 
 /* Carousel Control */
@@ -232,7 +302,11 @@ li { list-style-type:none;}
 /* ---- grid ---- */
 
 .content {
+<<<<<<< HEAD
 	margin-top: 200px;
+=======
+	margin-top: 550px;
+>>>>>>> 663c6e8dc8e639e82b2aa920b5dab31ab10d0d80
 }
 
 .grid {
@@ -272,6 +346,7 @@ li { list-style-type:none;}
 	margin-top: 50px;
 }
 
+<<<<<<< HEAD
 #name-div {
 	/*position: absolute;
 	top: 75px;
@@ -295,13 +370,16 @@ li { list-style-type:none;}
 	font-size: 70px;
 	font-weight:bold;
 }
+=======
+>>>>>>> 663c6e8dc8e639e82b2aa920b5dab31ab10d0d80
 
 /* ---- footer ---- */
 
 .footer-container {
 	width: 100%;
 	/*border-top: 1px solid #FA7470;*/
-	margin-top: 450px;
+	margin-top: 200px;
+	margin-bottom: 45px;
 	text-align: center;
 	/*line-height: 125px;*/
 	color: #A9A9A9;
@@ -341,6 +419,69 @@ li { list-style-type:none;}
 
 #changeProfilePicInput + label {
 	cursor: pointer; /* "hand" cursor */
+}
+
+
+/* ---- Create Account ---- */
+
+.subscripitions {
+	height: 175px;
+	border: 1px solid #333;
+	border-radius: 15px;
+	margin-right: 10px;
+	padding: 0px;
+	overflow: hidden;
+	background-color: #F9F3F1;
+}
+
+.subscripitions-title {
+	width: 100%;
+	background-color: #FA7470;
+	margin: 0px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.subscripitions-amount {
+	margin-top: 35px;
+}
+
+.subscripitions-descrip {
+	margin-top: 8px;
+	margin-bottom: 8px;
+	padding-right: 3px;
+	padding-left: 3px;
+}
+
+.subscripitions-footer {
+	font-size: 12px;
+	background-color: #E8E4E1;
+	bottom: 0px;
+	position: absolute;
+	margin: 0px;
+	padding-bottom: 5px;
+	color: #B1ACA9;
+	width: 100%;
+}
+
+.free-subscription {
+	margin-top: 10px;
+	border: 1px solid #333;
+	border-radius: 15px;
+	/*text-align: center;*/
+	height: 35px;
+	line-height: 35px;
+	background-color: #E7D3CB;
+	padding-left: 15px;
+}
+
+#play-arrow {
+	line-height: 35px;
+	float:right;
+}
+
+.create-account-form {
+	margin-top: 60px;
 }
 
 
@@ -714,11 +855,5 @@ textarea { height: 80px; resize: none; }
             transform: perspective(140px) rotateY(180deg);
     opacity: 0; 
   }
-}
-
-/* ---- Upgrade Page ---- */
-
-.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
-    width: 100%;
 }
 

@@ -5,9 +5,8 @@ var contentURL;
 
 $(document).ready(function(){
 
-  // dislplays the clicked on image in a modal
+  // dislplays the clicked on image in a modal on the explore page
 	$('.pop').on('click', function() {
-		console.log($(this).find('img').attr('src'));
 		$('#imagepreview').attr('src', $(this).find('img').attr('src'));
     $('#imagepreview').css({
       visibility: 'visible'
@@ -15,15 +14,20 @@ $(document).ready(function(){
 		$('#exploreModal').modal('show');
 	});
 
+  // displays the clicked on image in a modal on the home page
   $('.pop').on('click', function() {
     contentURL = $(this).find('img').attr('src');
     $('#imagepreview').attr('src', contentURL);
+    $('.sk-folding-cube').css({
+      visibility: 'hidden'
+    });
     $('#imagepreview').css({
       visibility: 'visible'
     });
     $('#homeModal').modal('show');
   });
 
+  // facebook share button
   $('.fb-share-button').on('click', function() {
     $(this).attr('data-href', contentURL);
   })
@@ -46,6 +50,9 @@ $(document).ready(function(){
 
           reader.onload = function (e) {
               $('#' + id).attr('src', e.target.result);
+              $('.sk-folding-cube').css({
+                visibility: 'hidden'
+              });
               $('#uploaded-image').css({
                 visibility: 'visible'
               })
@@ -97,6 +104,7 @@ $(document).ready(function(){
   // hides the upload modal when the save
   $('#saveButton').click(function() {
     $('#homeModal').modal('hide');
+
   });
 
   // hides the image in the modal when a style is clicked and shows the loading animation
@@ -110,7 +118,27 @@ $(document).ready(function(){
     $('.sk-folding-cube').css({
       visibility: 'visible'
     });
+
+    // call stop animation function
+    stopAnimation();
   });
+
+  // function will hide the animation and display the stylized image in the modal after 4 seconds
+  function stopAnimation() {
+    setTimeout(function(){ 
+      $('.sk-folding-cube').css({
+      visibility: 'hidden'
+      });
+      $('#uploaded-image').css({
+      visibility: 'visible'
+    });
+    $('#imagepreview').css({
+      visibility: 'visible'
+    });
+    }, 4000);
+  }
+
+  $
 
 
 })

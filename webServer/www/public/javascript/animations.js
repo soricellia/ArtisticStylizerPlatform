@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 
 	$('#stick').delay(200).animate({
-		left: '1500px'
+		left: '5000px'
 	}, {
 		step: function(currentLeft) { 
 	        var letter;
