@@ -55,7 +55,7 @@ html {
 .navbar li a {
 	color: black !important;
 	padding-right: 30px;
->>>>>>> 663c6e8dc8e639e82b2aa920b5dab31ab10d0d80
+>>>>>>> master
 }
 
 .navbar {
@@ -78,7 +78,7 @@ html {
 =======
 .navbar-brand:focus, .navbar-inverse .navbar-brand:hover {
 	color: #FA7470;
->>>>>>> 663c6e8dc8e639e82b2aa920b5dab31ab10d0d80
+>>>>>>> master
 }
 
 .sign-up {
@@ -142,7 +142,7 @@ html {
   align-items: center;
   width: 100%;
 	color: white;
->>>>>>> 663c6e8dc8e639e82b2aa920b5dab31ab10d0d80
+>>>>>>> master
 }
 
 #upload-photo {
@@ -189,7 +189,7 @@ html {
 	box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
 	margin-top: 20px;
 }
->>>>>>> 663c6e8dc8e639e82b2aa920b5dab31ab10d0d80
+>>>>>>> master
 
 .file-upload{display:block;text-align:center;font-size: 12px;}
 .file-upload .file-select{display:block;/*border: 2px solid #dce4ec;*/cursor:pointer;height:40px;line-height:40px;text-align:left;overflow:hidden;position:relative;}
@@ -219,7 +219,7 @@ html {
 	text-align: center;
 }
 
-.styles {
+/*.styles {
 	border-color: black;
 	border-width: 1px;
 	border-style: solid;
@@ -227,6 +227,14 @@ html {
 	width: 75px;
 	display: inline-block;
 	margin: 10px;
+}*/
+
+.carousel-images {
+	width: 150px !important;
+	height: 125px !important;
+	background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
 }
 
 <<<<<<< HEAD
@@ -243,22 +251,6 @@ html {
 
 ul.thumbnails { 
     margin-bottom: 0px;
-=======
-#image {
-	position: absolute;
-	top: 0px;
-	width: 100%;
-	height: 550px;
-	z-index: -1;
-}
-
-#image-wrapper {
-	width: 100%;
-	height: 100%;
-	z-index: -1;
-	background-size: cover;
-	background-repeat: no-repeat;
->>>>>>> 663c6e8dc8e639e82b2aa920b5dab31ab10d0d80
 }
 
 /* Carousel Control */
@@ -291,6 +283,22 @@ ul.thumbnails {
     .caption {
         word-break: break-all;
     }
+=======
+#image {
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	height: 550px;
+	z-index: -1;
+}
+
+#image-wrapper {
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	background-size: cover;
+	background-repeat: no-repeat;
+>>>>>>> master
 }
 
 
@@ -306,7 +314,7 @@ li { list-style-type:none;}
 	margin-top: 200px;
 =======
 	margin-top: 550px;
->>>>>>> 663c6e8dc8e639e82b2aa920b5dab31ab10d0d80
+>>>>>>> master
 }
 
 .grid {
@@ -371,15 +379,14 @@ li { list-style-type:none;}
 	font-weight:bold;
 }
 =======
->>>>>>> 663c6e8dc8e639e82b2aa920b5dab31ab10d0d80
+>>>>>>> master
 
 /* ---- footer ---- */
 
 .footer-container {
 	width: 100%;
 	/*border-top: 1px solid #FA7470;*/
-	margin-top: 200px;
-	margin-bottom: 45px;
+	margin-top: 450px;
 	text-align: center;
 	/*line-height: 125px;*/
 	color: #A9A9A9;
@@ -419,69 +426,6 @@ li { list-style-type:none;}
 
 #changeProfilePicInput + label {
 	cursor: pointer; /* "hand" cursor */
-}
-
-
-/* ---- Create Account ---- */
-
-.subscripitions {
-	height: 175px;
-	border: 1px solid #333;
-	border-radius: 15px;
-	margin-right: 10px;
-	padding: 0px;
-	overflow: hidden;
-	background-color: #F9F3F1;
-}
-
-.subscripitions-title {
-	width: 100%;
-	background-color: #FA7470;
-	margin: 0px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-
-.subscripitions-amount {
-	margin-top: 35px;
-}
-
-.subscripitions-descrip {
-	margin-top: 8px;
-	margin-bottom: 8px;
-	padding-right: 3px;
-	padding-left: 3px;
-}
-
-.subscripitions-footer {
-	font-size: 12px;
-	background-color: #E8E4E1;
-	bottom: 0px;
-	position: absolute;
-	margin: 0px;
-	padding-bottom: 5px;
-	color: #B1ACA9;
-	width: 100%;
-}
-
-.free-subscription {
-	margin-top: 10px;
-	border: 1px solid #333;
-	border-radius: 15px;
-	/*text-align: center;*/
-	height: 35px;
-	line-height: 35px;
-	background-color: #E7D3CB;
-	padding-left: 15px;
-}
-
-#play-arrow {
-	line-height: 35px;
-	float:right;
-}
-
-.create-account-form {
-	margin-top: 60px;
 }
 
 
@@ -855,5 +799,11 @@ textarea { height: 80px; resize: none; }
             transform: perspective(140px) rotateY(180deg);
     opacity: 0; 
   }
+}
+
+/* ---- Upgrade Page ---- */
+
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: 100%;
 }
 

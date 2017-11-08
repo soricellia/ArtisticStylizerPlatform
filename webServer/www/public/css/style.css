@@ -42,6 +42,18 @@ html {
 	border-bottom: 2px solid #FA7470;
 	color: #FA7470 !important;
 	padding-bottom: 4px;
+
+.navbar {
+	background-color: white;
+	z-index: 1;
+	border-color: white;
+	border-radius: 0px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.16), 0 1px 3px rgba(0,0,0,0.23);
+}
+
+.navbar li a {
+	color: black !important;
+	padding-right: 30px;
 }
 
 .navbar {
@@ -95,9 +107,7 @@ html {
 	border-radius: 100%;
 }
 
-.dropdown a:hover {
-	background-color: #f1f1f1;
-}
+.dropdown a:hover {background-color: #f1f1f1}
 
 .show {
 	display:block;
@@ -107,7 +117,8 @@ html {
 
 .wrapper {
 	margin-top: 100px;
-}
+
+
 
 #upload-photo {
 	border-radius: 5px 0px 0px 5px;
@@ -129,7 +140,6 @@ html {
 }
 
 /* -----  Photo and Video Upload Section ------ */
-
 .file-upload{display:block;text-align:center;font-size: 12px;}
 .file-upload .file-select{display:block;/*border: 2px solid #dce4ec;*/cursor:pointer;height:40px;line-height:40px;text-align:left;overflow:hidden;position:relative;}
 .file-upload .file-select .file-select-button{/*background:#dce4ec;*/padding:0 10px;display:inline-block;height:40px;line-height:40px;}
@@ -222,7 +232,6 @@ ul.thumbnails {
         word-break: break-all;
     }
 }
-
 
 li { list-style-type:none;}
 

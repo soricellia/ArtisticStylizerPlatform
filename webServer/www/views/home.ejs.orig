@@ -44,7 +44,7 @@
 			<div class="col-md-10 col-md-offset-1"><h1 style="font-weight:bold; color: #FA7470; font-size: 50px">Stylize</h1></div>
 		</div>
 		<div class="row">
->>>>>>> 663c6e8dc8e639e82b2aa920b5dab31ab10d0d80
+>>>>>>> master
 			<div class="col-md-10 col-md-offset-1"><h1 style="margin-top: 10px">Upload a Photo or Video to Style</h1></div>
 		</div>	
 		<div class="row">
@@ -57,7 +57,7 @@
 		          		<input id="uploadPhoto" type="file" class="upload" multiple="multiple" accept="image/*" />
 =======
 		          		<input type="file" name="chooseFile" id="chooseFile" onchange="readURL(this);"/>
->>>>>>> 663c6e8dc8e639e82b2aa920b5dab31ab10d0d80
+>>>>>>> master
 		        	</div>
 		      	</div>
 			</div>
@@ -70,7 +70,7 @@
 		          		<input id="uploadVideo" type="file" class="upload" multiple="multiple" accept="image/*" />
 =======
 		          		<input type="file" name="chooseFile" id="chooseFile" onchange="readURL(this);">
->>>>>>> 663c6e8dc8e639e82b2aa920b5dab31ab10d0d80
+>>>>>>> master
 		        	</div>
 		      	</div>
 			</div>	
@@ -90,8 +90,8 @@
 							            <div class="item active">
 						                    <ul class="thumbnails">
 						                        <li class="col-sm-4 first-style-carousel">
-													<div class="thumbnail">
-														<a href="#"><img src="/images/rowing2.jpg" alt=""></a>
+													<div class="thumbnail" style="text-align: center; height: 135px; line-height: 130px;" >Upload Style
+														<a href="#"></a>
 						                            </div>
 						                        </li>
 						                        <li class="col-sm-4">
@@ -141,6 +141,12 @@
         			</div>
         			<div class="modal-body">
           				<img id="uploaded-image" src="#" style="width:100%;"/>
+          				<div class="sk-folding-cube">
+						  <div class="sk-cube1 sk-cube" style="background-color: #FA7470;"></div>
+						  <div class="sk-cube2 sk-cube" style="background-color: #FA7470;"></div>
+						  <div class="sk-cube4 sk-cube" style="background-color: #FA7470;"></div>
+						  <div class="sk-cube3 sk-cube" style="background-color: #FA7470;"></div>
+						</div>
         			</div>
         			<div class="modal-footer">
         				<div class="fb-share-button" data-href="http://10.10.7.179:8085/public/images/pip.png" data-layout="button" data-size="small" data-mobile-iframe="true"><a style="float:left; width: 50px; height: 50px; margin-right: 10px;" class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F10.10.7.179%2Fpublic%2Fimages%2Fpip.png&amp;src=sdkpreparse"><img src="/images/facebook.png"/></a></div>
@@ -158,7 +164,7 @@
         			<div class="modal-header">
           				<div class="container carousel-container">
         					<div class="row">
-        						<div class="col-md-12" style="text-align: center">Choose Style</div>
+        						<div class="col-md-12" style="text-align: center">Choose A Style</div>
         					</div>
           					<div class="row">
           						<div class="carousel" id="myCarousel">
@@ -166,18 +172,18 @@
 							            <div class="item active">
 						                    <ul class="thumbnails">
 						                        <li class="col-sm-4 first-style-carousel">
-													<div class="thumbnail">
-														<a href="#"><img src="/images/rowing2.jpg" alt=""></a>
+													<div class="thumbnail" style="text-align: center; height: 135px; line-height: 130px;" >Upload Style
+														<a href="#"></a>
 						                            </div>
 						                        </li>
 						                        <li class="col-sm-4">
 													<div class="thumbnail">
-														<a href="#"><img src="/images/rowing2.jpg" alt=""></a>
+														<a href="#"><img src="/images/rowing2.jpg" alt="" class="carousel-images"></a>
 													</div>
 						                        </li>
 						                        <li class="col-sm-4">
 													<div class="thumbnail">
-														<a href="#"><img src="/images/rowing2.jpg" alt=""></a>
+														<a href="#"><img src="/images/rowing2.jpg" alt="" class="carousel-images"></a>
 													</div>
 						                        </li>
 						                    </ul>
@@ -186,17 +192,17 @@
 						                    <ul class="thumbnails">
 						                        <li class="col-sm-4 first-style-carousel">
 													<div class="thumbnail">
-														<a href="#"><img src="/images/rowing.jpg" alt=""></a>
+														<a href="#"><img src="/images/rowing.jpg" alt="" class="carousel-images"></a>
 													</div>
 						                        </li>
 						                        <li class="col-sm-4">
 													<div class="thumbnail">
-														<a href="#"><img src="/images/rowing.jpg" alt=""></a>
+														<a href="#"><img src="/images/rowing.jpg" alt="" class="carousel-images"></a>
 													</div>
 						                        </li>
 						                        <li class="col-sm-4">
 													<div class="thumbnail">
-														<a href="#"><img src="/images/rowing.jpg" alt=""></a>
+														<a href="#"><img src="/images/rowing.jpg" alt="" class="carousel-images"></a>
 													</div>
 						                        </li>
 						                    </ul>
@@ -218,10 +224,10 @@
         			<div class="modal-body">
           				<img id="imagepreview" src="" style="width:100%;"/>
           				<div class="sk-folding-cube">
-						  <div class="sk-cube1 sk-cube"></div>
-						  <div class="sk-cube2 sk-cube"></div>
-						  <div class="sk-cube4 sk-cube"></div>
-						  <div class="sk-cube3 sk-cube"></div>
+						  <div class="sk-cube1 sk-cube" style="background-color: #FA7470;"></div>
+						  <div class="sk-cube2 sk-cube" style="background-color: #FA7470;"></div>
+						  <div class="sk-cube4 sk-cube" style="background-color: #FA7470;"></div>
+						  <div class="sk-cube3 sk-cube" style="background-color: #FA7470;"></div>
 						</div>
         			</div>
         			<div class="modal-footer">
@@ -248,7 +254,7 @@
         			</div>
         			<div class="modal-footer">
 						<button type="button" class="btn btn-primary modal-button">Save content</button>
->>>>>>> 663c6e8dc8e639e82b2aa920b5dab31ab10d0d80
+>>>>>>> master
           				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         			</div>
       			</div>
@@ -337,7 +343,7 @@
 	        <a class="footer-content" href="ebinizerlop@gmail.com">Email Us</a>
 	        <span class ="footer-content" >&copy; Copyright 1738. No Rights Reserved</span>
 	  </div>
->>>>>>> 663c6e8dc8e639e82b2aa920b5dab31ab10d0d80
+>>>>>>> master
 
 </body>
 
