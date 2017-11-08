@@ -1,17 +1,16 @@
+"""
+original author (https://arxiv.org/pdf/1703.06868.pdf) implementation
+"""
+
 import tensorflow as tf
-import threading
-import module_utils
-import inference_ops
-import vgg19
-import adaIN
+from tensorflow.python.client import device_lib
+from inference_ops import Ops
 from matplotlib import image
-import numpy as np
-import os
 
-# training options
-
-tf.flags.DEFINE_string("process_id", "9999", "unique identifier of process")
-tf.flags.DEFINE_float("per_process_gpu_memory_fraction", 0.1, "faction of gpu memory permitted to use")
+# image paths 
+tf.flags.DEFINE_string("style_img_path", "/home/mike/temps/megaseeds.jpg", "style image directory path")
+tf.flags.DEFINE_string("content_img_path", "/home/mike/temps/freedom.jpg", "content image directory path")
+tf.flags.DEFINE_string("result_img_path", "/home/mike/results", "result image directory directory path")
 
 # preprocessing options
 tf.flags.DEFINE_integer("final_size", 256, "size of image used for training")
@@ -38,25 +37,21 @@ tf.flags.DEFINE_float("weight_decay", 0, "weight decay")
 FLAGS = tf.flags.FLAGS
 FLAGS._parse_flags()
 
-
-# TODO set option for FLAGS.resume
 with tf.Graph().as_default() as graph:
+  devices=device_lib.list_local_devices()
+  gpuPresent = [True for device in devices if device.device_type == "GPU"]
+
+  if gpuPresent:
+    # TODO must read this flag
     gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=FLAGS.per_process_gpu_memory_fraction)
     session_config = tf.ConfigProto(allow_soft_placement=True,
                                     log_device_placement=False,
                                     gpu_options=gpu_options)
     sess = tf.Session(config=session_config)
-    with sess.as_default():
+  else:
+    sess = tf.Session()
 
-        # set up project constants
-        mod_utils = module_utils.module_utils(FLAGS, run_type="inference")
-        sess.run(tf.global_variables_initializer())
+  model = Ops(FLAGS=FLAGS)
+  stylized_img =  model.run(FLAGS=FLAGS, sess=sess)
 
-        process_assoc_content_img, process_assoc_style_img = mod_utils.get_inference(process_id=FLAGS.process_id)
-
-        decoder_t7 = "decoder.t7"
-        vgg_t7="vgg_normalised.t7"
-        alpha=1
-
-        stylized, content_image, style_image = inference_ops.stylize(process_assoc_content_img, process_assoc_style_img, alpha, vgg_t7, decoder_t7, resize=[512,512])
-        image.imsave(os.path.join(mod_utils.IMG_INFERENCE_RESULTS_DIR, "{}_results.jpg".format(FLAGS.process_id)), inference_ops.any_to_uint8_clip(stylized))
+  image.imsave(os.path.join(mod_utils.IMG_INFERENCE_RESULTS_DIR, "{}_results.jpg".format(FLAGS.process_id)), inference_ops.any_to_uint8_clip(stylized))
