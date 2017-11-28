@@ -55,18 +55,12 @@ exports.post = function(req, res){
 		console.log('photo uploaded');
 		var options = {
 			pythonPath: '/usr/bin/python3',
-		        scriptPath: '/home/mike/repos/cmpt475_Nov27/ArtisticStylizerPlatform/gpuServer/AS/src',
+		        scriptPath: '/home/mike/repos/cmpt475_Nov28/ArtisticStylizerPlatform/webServer/www',
 		        args: [req.files[0].path, req.files[1].path, '/home/mike/results', 256, 512]
 		};
 		try{
-			PythonShell.run('inference_master.py', options, function(err){
-				if (err) throw err;
-				Profile.getProfile(req.user.userid, function(err, result) {
-					if (err) throw err
-					
-					var userProfile = result;
-					return res.render("../views/home.ejs", { user : req.user, profile : userProfile });
-				})
+			PythonShell.run('processManager.py', options, function(err){
+		        if (err) throw err;
 			});
 		}
 		catch(err){
