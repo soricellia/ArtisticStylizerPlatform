@@ -1,5 +1,4 @@
 //server.js
-//var upload = multer({dest: '/home/mike/'})
 
 /*******************************************
 *					SET UP
@@ -29,7 +28,8 @@ app.use(express.static('public', options));
 *						Server information
 ***************************************************************/
 var http_IP = '10.10.7.179';
-var http_port = 8082;
+
+var http_port = 8084;
 
 /**************************************************************
 *					Passport authentication
@@ -71,7 +71,8 @@ require('./config/passport')(passport); // pass passport for configuration
 //first we'll make some middleware to get rid of capital extensions
 app.use(function(req, res, next){
 	req.url = req.url.toLowerCase();
-	//console.log(req);
+	console.log(req.url);
+	console.log("asdfasdfasdfasdfasdfasdfasd")
 	next();
 })
 
@@ -86,10 +87,6 @@ app.use(function(err, req, res, next){
 	console.error(err.stack);
 	next(err);
 })
-/***************************************************************
-*					File upload	
-***************************************************************/
-var multer = require('multer');
 
 /**************************************************************
 *						Database
