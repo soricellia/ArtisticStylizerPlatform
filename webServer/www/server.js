@@ -88,6 +88,7 @@ app.use(function(err, req, res, next){
 	next(err);
 })
 
+
 /**************************************************************
 *						Database
 ***************************************************************/
@@ -108,7 +109,21 @@ db.connect(db.MODE_PRODUCTION, function(err){
 		//exit the program gracefully
 		process.exit(1);
 	} else { 
+		/**************************************************************
+		*				Set up the queue for style transfers 
+		**************************************************************/
 		
+		var PythonShell = require('python-shell');
+		var pyshell = new PythonShell('./scripts/processManager.py');
+
+		// event handler for when a style transfer is completed
+		pyshell.on('message', function(message){
+  			// received a message sent from the Python script (a simple "print" statement)
+  			console.log(message);
+
+  			// we finished a style transfer, write the useage to the database
+		});
+
 		/****************************************************************************
 		*			Tell the app to listen to the speicfied port and ip
 		****************************************************************************/
