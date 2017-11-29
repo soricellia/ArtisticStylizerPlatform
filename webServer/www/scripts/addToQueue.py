@@ -3,74 +3,101 @@ import argparse
 import json
 import pandas as pd
 import logging
-
-
+import datetime
+pd.set_option('display.max_rows', 1000)
 
 def load_json(file):
-  with open(file, "r") as json_file:
-    persisted_processes = json.load(json_file)
+  logger.info("load_json")
+  logger.info(file)
+  #with open(file, "r") as json_file:
+  #  persisted_processes = json.load(json_file)
+  #logger.info(persisted_processes)
+  persisted_processes = pd.read_json(file, orient="records")
+  logger.info(persisted_processes)
   return persisted_processes
 # end
 
-def write_to_json(file, data):
+def write_to_json(file, df):
+  logger.info("write_to_json")
   # TODO check that this appends and does not completely write over
-  with open(file, "a") as json_file:
-    json.dump(data, json_file)
+  logger.info(file)
+  logger.info(df)
+  df.to_json(file, orient="records")
+  #with open(file, "a") as json_file:
+  #  json.dump(data, json_file)
 # end
 
 def create_df(data_dict):
+  logger.info("create_df")
   df = pd.DataFrame([data_dict])
-  print(df)
+  logger.info(df)
   return df
 # end
 
-def max_queue_rank(df):
+def update_rank(data_dict, max_rank):
+  logger.info("update_rank")
+  logger.info(data_dict)
+  data_dict["queue_rank"] = max_rank + 1
+  logger.info(data_dict)
+  return data_dict
 # end
 
-if __name__ == "__main__":
-  logger = logging.getLogger(__name__)
-  logger.setLevel(logging.INFO)
+def join_dfs(df1, df2):
+  logger.info("join_dfs")
+  complete_df = pd.concat([df1, df2])
+  logger.info(complete_df)
+  return complete_df 
+# end
 
-  formatter = logging.Formatter('%(asctime)s:%(name)s:%(message)s')
-  currentTime = str(datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S'))
-  logFileName = 'process_queue.log'
+def max_queue_rank(df):
+  logger.info("max_queue_rank")
+  max_rank = max(df["queue_rank"].tolist())
+  logger.info('max_rank:{}'.format(max_rank))
+  return max_rank
+# end
 
-  fileHandler = logging.FileHandler(logFileName)
-  fileHandler.setLevel(logging.INFO)
-  fileHandler.setFormatter(formatter)
+logger = logging.getLogger("addToQueue")
+logger.setLevel(logging.INFO)
 
-  logger.addHandler(fileHandler)
-  parser = argparse.ArgumentParser()
-  parser.add_argument("content_img_path", type=str, help="full path to content image")
-  parser.add_argument("style_img_path", type=str, help="full path to style image")
-  parser.add_argument("result_img_path", type=str, help="full path to results directory where stylized content image is written")
-  parser.add_argument("final_size", default=256, type=int, help="final dimensions of the stylized content image")
-  parser.add_argument("transient_size", default=512, type=int, help="size images before cropping")
-  args = parser.parse_args()
+formatter = logging.Formatter('%(asctime)s:%(name)s:%(message)s')
 
-  current_process_data = {
-    "content_img_path":args.content_img_path,
-    "style_img_path":args.style_img_path,
-    "result_img_path":args.result_img_path,
-    "final_size":args.final_size,
-    "transient_size":args.transient_size,
-    "queue_rank":0
-  }
+fileHandler = logging.FileHandler('addToQueue.log')
+fileHandler.setFormatter(formatter)
 
-  json_file = "process_queue.json"
+logger.addHandler(fileHandler)
 
-  if os.path.exists(os.path.join(os.getcwd(), json_file)):
-    persisted_processes_json = load_json(file=json_file)
-    df = create_df(persisted_processes_json)
-    #TODO get max element in queue
-    #TODO update current element to max +1
-    write_to_json(file=json_file, data=current_process_data)
-    print(persisted_processes_json)
-    # check if process is running if el
-  else:
-    os.mknod(os.path.join(os.getcwd(), json_file))
-    write_to_json(file=json_file, data=current_process_data)
-    persisted_processes_json = load_json(file=json_file)
-    print(persisted_processes_json) 
+parser = argparse.ArgumentParser()
+parser.add_argument("content_img_path", type=str, help="full path to content image")
+parser.add_argument("style_img_path", type=str, help="full path to style image")
+parser.add_argument("result_img_path", type=str, help="full path to results directory where stylized content image is written")
+parser.add_argument("final_size", default=256, type=int, help="final dimensions of the stylized content image")
+parser.add_argument("transient_size", default=512, type=int, help="size images before cropping")
+args = parser.parse_args()
 
-  # if there is no process running kick off next element in queue
+current_process_data = {
+  "content_img_path":args.content_img_path,
+  "style_img_path":args.style_img_path,
+  "result_img_path":args.result_img_path,
+  "final_size":args.final_size,
+  "transient_size":args.transient_size,
+  "queue_rank":0
+}
+
+json_file = "process_queue.json"
+json_file = os.path.join(os.getcwd(), json_file)
+
+logger.info("#################new process######################")
+logger.info("incoming process data: {}".format(current_process_data))
+
+if os.path.exists(json_file):
+  persisted_processes_json = load_json(file=json_file)
+  max_rank = max_queue_rank(df=persisted_processes_json)
+  current_process_data = update_rank(data_dict=current_process_data, max_rank=max_rank)
+  current_process_data_df = create_df(current_process_data)
+  df_complete = join_dfs(df1=persisted_processes_json, df2=current_process_data_df)
+  #TODO update current element to max +1
+  write_to_json(file=json_file, df=df_complete)
+else:
+  os.mknod(os.path.join(os.getcwd(), json_file))
+  current_process_data_df = create_df(current_process_data)
+  write_to_json(file=json_file, df=current_process_data_df)
