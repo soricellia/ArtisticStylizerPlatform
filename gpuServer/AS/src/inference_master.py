@@ -3,10 +3,19 @@ original author (https://arxiv.org/pdf/1703.06868.pdf) implementation
 """
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='3'
+import logging
 import tensorflow as tf
 from tensorflow.python.client import device_lib
 import argparse
 from inference_ops import Ops
+
+logger = logging.getLogger("inference_master")
+logger.setLevel(logging.INFO)
+formatter = logging.Formatter("%(asctime)s:%(name)s:%(message)s")
+fileHandler = logging.FileHandler("inference_master.log")
+fileHandler.setFormatter(formatter)
+
+logger.addHandler(fileHandler)
 
 parser = argparse.ArgumentParser()
 # image paths 
@@ -25,6 +34,7 @@ with tf.Graph().as_default() as graph:
   devices=device_lib.list_local_devices()
   gpuPresent = [True for device in devices if device.device_type == "GPU"]
 
+  logger.info("start style transfer")
   if gpuPresent:
     # TODO must read this flag
     gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=args.per_process_gpu_memory_fraction)
@@ -37,3 +47,4 @@ with tf.Graph().as_default() as graph:
 
   model = Ops(args=args)
   model.run(args=args, sess=sess)
+  logger.info("end style transfer")
