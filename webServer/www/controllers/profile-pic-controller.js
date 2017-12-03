@@ -7,11 +7,11 @@ var multer = require('multer');
 
 // store the image in tmp folder in the public directory
 var storage = multer.diskStorage({
-  destination: function(req, res, callback){
-    callback(null, 'public/profiles/'+ userProfile.profileid + "/");
+  destination: function(req, file, callback){
+    callback(null, 'public/profiles/');
   },
   // keep the filename the same as the uploaded name
-  filename: function(req, file, callback){
+  filename: function(req, file,  callback){
     callback(null, file.originalname);
   }
 });
@@ -20,16 +20,18 @@ var upload = multer({storage: storage}).single('profilepic');
 
 exports.post = function(req, res){
 
+  
+    
   Profile.getProfile(req.user.userid, function(err, result) {
     if (err) throw err;
     var userProfile = result;
 
-    upload(req, res, function(err){
+    console.log("-------------------");
+    upload(req, res, userProfile,  function(err){
+      
       if(err) throw err;
       else {
-
-        console.log(req.files);
-        Profile.changeProfilePic(userProfile, req.files[0].path, function(err, results)) {
+        Profile.changeProfilePic(userProfile, 'public/profiles/'+userProfile.profileid + '/'+req.files.profilepic.name, function(err, results) {
 
           if (err) throw err;
           res.send(userProfile.profileid);
@@ -41,6 +43,8 @@ exports.post = function(req, res){
     });
 
   });
+
+ 
 
 };
 
