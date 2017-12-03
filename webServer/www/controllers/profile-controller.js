@@ -24,8 +24,9 @@ var Profile = require('../model/profile.js');
  			function(err, result) { 
  				if (err) throw err;
  				var profilePic = '/images/pip.png';
+ 				console.log("result", result.profile_pic_path);
  				if(result != null)
- 					var profilepic = result;
+ 					profilePic = result.profile_pic_path;
  				
  				return res.render("../views/profile.ejs", { user : sessionUser , picture: profilePic })
  		});

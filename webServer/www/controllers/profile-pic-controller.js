@@ -8,7 +8,11 @@ var multer = require('multer');
 // store the image in tmp folder in the public directory
 var storage = multer.diskStorage({
   destination: function(req, file, callback){
-    callback(null, 'public/profiles/');
+    Profile.getProfile(req.user.userid, function(err, result){
+
+      callback(null, 'public/profiles/'+result.profileid);
+  
+    })
   },
   // keep the filename the same as the uploaded name
   filename: function(req, file,  callback){
@@ -27,11 +31,11 @@ exports.post = function(req, res){
     var userProfile = result;
 
     console.log("-------------------");
-    upload(req, res, userProfile,  function(err){
-      
+    upload(req, res, function(err){
+      console.log(req);
       if(err) throw err;
       else {
-        Profile.changeProfilePic(userProfile, 'public/profiles/'+userProfile.profileid + '/'+req.files.profilepic.name, function(err, results) {
+        Profile.changeProfilePicture(userProfile.profileid, '/profiles/'+userProfile.profileid+'/'+req.file.originalname, function(err, results) {
 
           if (err) throw err;
           res.send(userProfile.profileid);

@@ -157,9 +157,9 @@ Profile.getProfilePicture = function(profileId, done){
 		connection.query('SELECT profile_pic_path FROM profiles WHERE profile_id=?',
 		[profileId],
 		function(err, result){
-			console.log("here3");
+			console.log("--------------------");
 			connection.release();
-			return done(err, result.profile_pic_path);
+			return done(err, result[0]);
 		});
 	});
 }
