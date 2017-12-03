@@ -160,6 +160,7 @@ router.get('/account', function(req, res){
 });
 
 
+
 /************************************************************************
 *							Content Upload Route
 *
@@ -231,6 +232,7 @@ router.post('/upload_photo', function(req, res){
 });
 
 
+
 //export the router to our application
 module.exports = router;
 
@@ -252,4 +254,6 @@ function routeToHome(req, res, next){
 
 	//if not redirect to home page
 	res.redirect('/about');	
+
 }
+

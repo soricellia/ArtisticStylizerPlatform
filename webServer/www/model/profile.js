@@ -139,28 +139,32 @@ Profile.changeProfilePicture = function(profileId, picturePath, done){
 	db.get(db.WRITE, function(err, connection){
 		if(err) return done(err);
 
+
 		connection.query('UPDATE profiles SET profile_pic_path=? WHERE profile_id=?',
+
 		[picturePath, profileId],
 		function(err, result){
 			connection.release();
 			return done(err, result);
+
 		});
 	});
 }
 
 Profile.getProfilePicture = function(profileId, done){
-	console.log("here");
+	
 	db.get(db.READ, function(err, connection){
-		console.log("here1");
+	
 		if(err) return done(err);
-		console.log("here2");
+		
 		connection.query('SELECT profile_pic_path FROM profiles WHERE profile_id=?',
 		[profileId],
 		function(err, result){
-			console.log("--------------------");
+			
 			connection.release();
 			return done(err, result[0]);
 		});
+
 	});
 }
 
@@ -444,6 +448,7 @@ Profile.getAllPictures = function(done){
 	})
 }
 
+
 Profile.upgradeToPremium = function(profileid, done){
 	db.get(db.WRITE, function(err, connection){
 		if(err) return done(err);
@@ -474,5 +479,31 @@ Profile.downgradeToFree = function(profileid, done){
 
 	});
 }
+
+Profile.reportPicture = function(reporterProfileId, pictureId, videoId, description, done){
+	db.get(db.WRITE, function(err, connection){
+		if(err) return done(err);
+
+		//lets write a report to the database
+		connection.query('INSERT INTO reports(reporter_profile_id, video_id, picture_id, description) VALUES(?,?,?,?)',
+			[reporterProfileId, videoId, pictureId, description],
+			function(err, result){
+				connection.release();
+				return done(err, result);
+			})
+	});
+}
+
+Profile.getReports = function(done){
+	db.get(db.READ, function(err, connection){
+		if(err) return done(err);
+
+		connection.query('SELECT * FROM reports', function(err, result){
+			connection.release();
+			return done(err, result);
+		})
+	})
+}
+
 
 module.exports = Profile;
