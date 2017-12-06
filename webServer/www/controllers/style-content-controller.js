@@ -1,5 +1,3 @@
-
-
 var User = require('../model/user');
 var Profile = require('../model/profile');
 var PythonShell = require('python-shell');
